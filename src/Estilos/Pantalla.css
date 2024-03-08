@@ -1,0 +1,9 @@
+.Pantalla-calc{
+
+    width: 80%;
+    height: 100px;
+    background-color: black;
+    border-radius: 15px;
+    overflow-wrap: anywhere;
+    overflow-y: hidden
+}
