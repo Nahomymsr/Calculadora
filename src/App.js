@@ -9,13 +9,18 @@ var Reset = false;
 var OperadorAnt = null;
 var OperadorAct = null;
 
+
+
+
 function App() {
   
 const[StateNum,SetNum]= useState(null);
+const[StateOp,SetOp]= useState(null);
+const[NextNum,SetNextNum] = useState(null)
 
  
 const ControladorNum = (PropNum,IsNum) => {
- 
+
     if(IsNum)
     {
     
@@ -23,12 +28,14 @@ const ControladorNum = (PropNum,IsNum) => {
           {
               if (Reset == false)
               {
-                  SetNum(PropNum);
+                  SetNextNum(PropNum);
                   Reset = true;
+
               }
               else
               {
-                  SetNum(StateNum + PropNum)
+                  
+                  SetNextNum(NextNum + PropNum);
                 
               }
             
@@ -56,28 +63,32 @@ const ControladorNum = (PropNum,IsNum) => {
       {
         if(OperadorAct =="x")
         {
-            Num1= Number(Num1) * Number(StateNum)
+            Num1= Number(Num1) * Number(NextNum)
             SetNum(Num1)
+            SetNextNum("")
             Reset = false
         }
 
         if(OperadorAct =="-")
         {
-            Num1= Number(Num1) - Number(StateNum)
+            Num1= Number(Num1) - Number(NextNum)
             SetNum(Num1)
+            SetNextNum("")
             Reset = false
         }
         if(OperadorAct =="/")
         {
-            Num1= Number(Num1) / Number(StateNum)
+            Num1= Number(Num1) / Number(NextNum)
             SetNum(Num1)
+            SetNextNum("")
             Reset = false
         }
 
         if(OperadorAct =="+")
         {
-            Num1= Number(Num1) + Number(StateNum)
+            Num1= Number(Num1) + Number(NextNum)
             SetNum(Num1)
+            SetNextNum("")
             Reset = false
         }
 
@@ -89,6 +100,7 @@ const ControladorNum = (PropNum,IsNum) => {
               SetNum(Num1)
             } 
         }
+
         if(PropNum == "CE") 
         {
           Num1 = null;
@@ -105,19 +117,40 @@ const ControladorNum = (PropNum,IsNum) => {
           Num1 = StateNum
         
       }
+
       if (OperadorAct == null && OperadorAnt == null)
       {
         OperadorAct=PropNum
+
+        if(OperadorAct =="=" || OperadorAct == "CE" ){
+          SetOp("")
+        }
+        else{
+          SetOp(OperadorAct)
+        }
         
+          
+        
+
       }
       else if(OperadorAct != null)
       {
         OperadorAnt = OperadorAct
         OperadorAct = PropNum
+
+        if(OperadorAct =="=" || OperadorAct == "CE")
+        {
+         
+          SetOp("")
+        }
+        else{
+          SetOp(OperadorAct)
+        }
+        
+        
         
       }
     
-         
        
     }
 
@@ -129,7 +162,7 @@ const ControladorNum = (PropNum,IsNum) => {
     <div className="App d-flex justify-content-center">
       <div className="contenedor-principal shadow-button">
         <div id='Pantalla 'className='d-flex justify-content-center d-flex aling-item-center' style={{height:'30%'}}>
-            <Pantalla valor={StateNum}/>
+            <Pantalla valor={StateNum} operador={StateOp} numeroAnt={NextNum}/>
         </div>
 
         <div id='Teclado' className=' justify-content-center' >
