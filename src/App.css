@@ -3,10 +3,14 @@
   min-width: 430px;
   width:70%;
   height: 630px;
-  background-color: cornflowerblue;
   margin-top: 30px;
   border-radius: 30px;
   
+  backdrop-filter: blur(8px) saturate(110%);
+    -webkit-backdrop-filter: blur(8px) saturate(110%);
+    background-color: rgba(74, 144, 226, 0.06);
+    border-radius: 12px;
+    border: 1px solid rgba(209, 213, 219, 0.3);
 }
 
 .shadow-button{
