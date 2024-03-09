@@ -39,7 +39,7 @@ const ControladorNum = (PropNum,IsNum) =>
 
 
     }
-    else if(IsNum == false && PropNum !== "borr")
+    else if(IsNum == false && PropNum !== "borr" && PropNum !== "C")
     {
         if(FirstNum!== null && StateOp == null)
         {
@@ -102,7 +102,7 @@ const ControladorNum = (PropNum,IsNum) =>
       }
       
     }
-    else 
+    else if (IsNum == false && PropNum =="borr")
       {
         console.log("Entro a borrar")
 
@@ -122,6 +122,12 @@ const ControladorNum = (PropNum,IsNum) =>
         
         }
 
+      }
+      else if(IsNum == false && PropNum =="C")
+      {
+          SetFirstNum(null)
+          SetOp(null)
+          SetNextNum(null)
       }
 
 
