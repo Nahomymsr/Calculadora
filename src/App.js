@@ -10,10 +10,19 @@ function App() {
 const[FirstNum,SetFirstNum]= useState(null);
 const[StateOp,SetOp]= useState(null);
 const[NextNum,SetNextNum] = useState(null)
+const[ModoNoche,SetModoNoche] = useState(true)
+
 
  
 const ControladorNum = (PropNum,IsNum) => 
 {
+        if(PropNum =="N/D")
+        {
+          console.log("Entrp a N/D")
+           SetModoNoche(!ModoNoche)
+            return
+        }
+
 
     if(IsNum == true)
     {
@@ -141,7 +150,7 @@ const ControladorNum = (PropNum,IsNum) =>
           SetOp(null)
           SetNextNum(null)
       }
-
+      
 
    
 }
@@ -149,9 +158,9 @@ const ControladorNum = (PropNum,IsNum) =>
 
   return (
     <div className="App d-flex justify-content-center">
-      <div className="contenedor-principal" style={{backgroundColor:'whitesmoke'}}>
+      <div className="contenedor-principal" style={{ backgroundColor: ModoNoche? 'whitesmoke': 'black' }}>
         <div id='Pantalla 'className='d-flex justify-content-center d-flex aling-item-center' style={{height:'30%'}}>
-            <Pantalla valor={FirstNum} operador={StateOp} numeroAnt={NextNum}/>
+            <Pantalla ModoNoche={ModoNoche} valor={FirstNum}  operador={StateOp} numeroAnt={NextNum}/>
         </div>
 
         <div id='Teclado' className=' justify-content-center' >
@@ -175,6 +184,7 @@ const ControladorNum = (PropNum,IsNum) =>
           <Boton Num="3" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
           <Boton Num="+" IsNum={false} ColorClass="Background-Dodgerblue" ControladorNum={ControladorNum} />
 
+          <Boton Num="N/D" IsNum={false}  ColorClass="Background-white" ControladorNum={ControladorNum}/>
           <Boton Num="." IsNum={true}  ColorClass="Background-white" ControladorNum={ControladorNum}/>
           <Boton Num="0" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
           <Boton Num="=" IsNum={false} ColorClass="Background-Dodgerblue" ControladorNum={ControladorNum}/>
