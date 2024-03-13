@@ -99,6 +99,18 @@ const ControladorNum = (PropNum,IsNum) =>
                 SetOp(null)
               }
             }
+            if(StateOp == "%")
+            {
+              SetFirstNum((Number(NextNum) * Number(FirstNum))/100)
+              SetNextNum(null)
+
+              if(PropNum != "="){
+                SetOp(PropNum)
+              }
+              else{
+                SetOp(null)
+              }
+            }
       }
       
     }
@@ -137,40 +149,52 @@ const ControladorNum = (PropNum,IsNum) =>
 
   return (
     <div className="App d-flex justify-content-center">
-      <div className="contenedor-principal shadow-button">
+      <div className="contenedor-principal" style={{backgroundColor:'whitesmoke'}}>
         <div id='Pantalla 'className='d-flex justify-content-center d-flex aling-item-center' style={{height:'30%'}}>
             <Pantalla valor={FirstNum} operador={StateOp} numeroAnt={NextNum}/>
         </div>
 
         <div id='Teclado' className=' justify-content-center' >
-          <Boton Num="C" IsNum={false} ControladorNum={ControladorNum}/>
-          <Boton Num="borr" IsNum={false} ControladorNum={ControladorNum}/>
-          <Boton Num="+" IsNum={false}ControladorNum={ControladorNum} />
-          <Boton Num="-" IsNum={false}ControladorNum={ControladorNum} />
-      
-          <Boton Num="7" IsNum={true}  ControladorNum={ControladorNum} />
-          <Boton Num="8" IsNum={true} ControladorNum={ControladorNum}/>
-          <Boton Num="9" IsNum={true} ControladorNum={ControladorNum}/>
-          <Boton Num="x" IsNum={false} ControladorNum={ControladorNum}/>
+          <Boton Num="C" IsNum={false} ColorClass="Background-Grey" ControladorNum={ControladorNum}/>
+          <Boton Num="borr" IsNum={false} ColorClass="Background-Grey" ControladorNum={ControladorNum}/>
+          <Boton Num="%" IsNum={false} ColorClass="Background-Grey" ControladorNum={ControladorNum}/>
+          <Boton Num="/" IsNum={false} ColorClass="Background-Dodgerblue" ControladorNum={ControladorNum}/>
+
+          <Boton Num="7" IsNum={true}  ColorClass="Background-white" ControladorNum={ControladorNum} />
+          <Boton Num="8" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="9" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="x" IsNum={false} ColorClass="Background-Dodgerblue" ControladorNum={ControladorNum}/>
+
+          <Boton Num="4" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="5" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="6" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="-" IsNum={false} ColorClass="Background-Dodgerblue" ControladorNum={ControladorNum} />
+
+          <Boton Num="1" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="2" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="3" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="+" IsNum={false} ColorClass="Background-Dodgerblue" ControladorNum={ControladorNum} />
+
+          <Boton Num="." IsNum={true}  ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="0" IsNum={true} ColorClass="Background-white" ControladorNum={ControladorNum}/>
+          <Boton Num="=" IsNum={false} ColorClass="Background-Dodgerblue" ControladorNum={ControladorNum}/>
+        
           
-          <Boton Num="4" IsNum={true} ControladorNum={ControladorNum}/>
-          <Boton Num="5" IsNum={true} ControladorNum={ControladorNum}/>
-          <Boton Num="6" IsNum={true} ControladorNum={ControladorNum}/>
-          <Boton Num="/" IsNum={false}  ControladorNum={ControladorNum}/>
+        
+      
+          
+          
           
          
-          <Boton Num="1" IsNum={true} ControladorNum={ControladorNum}/>
-          <Boton Num="2" IsNum={true} ControladorNum={ControladorNum}/>
-          <Boton Num="3" IsNum={true} ControladorNum={ControladorNum}/>
-          <Boton Num="=" IsNum={false} ControladorNum={ControladorNum}/>
+          
+         
+          
+        
     
-    
+          
       </div>
 
-      <div className='d-flex'style={{marginInline:'15px'}}>
-         <Boton Num="0" IsNum={true}  ControladorNum={ControladorNum}/>
-          <Boton Num="." IsNum={true} ControladorNum={ControladorNum}/>
-         </div>
+     
     </div>
     </div>
   );
